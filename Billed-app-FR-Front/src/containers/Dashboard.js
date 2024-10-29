@@ -172,13 +172,14 @@ export default class {
 		if (!this.openLists) this.openLists = {};
 
 		// Check if the list is already open or not
-		const isOpen = this.openLists[index] || false;
+		let isOpen = this.openLists[index] || false;
 
 		// Toggle the open state for the list in question
 		this.openLists[index] = !isOpen;
+		isOpen = this.openLists[index];
 
 		// If the list was closed (and will therefore be opened)
-		if (!isOpen) {
+		if (isOpen) {
 			$(`#arrow-icon${index}`).css({
 				transform: 'rotate(0deg)',
 			});
